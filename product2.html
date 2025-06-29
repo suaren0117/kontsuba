@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access | Tsubasa Konno</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- フォント＆アイコン -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="loaded">
+  <header>
+    <div class="container header-inner">
+      <h1 class="logo">Tsubasa Konno lineup</h1>
+      <nav>
+<ul class="nav-list">
+  <li><a href="index.html">HOME</a></li>
+  <li><a href="products.html">PRODUCTS</a></li>
+  <li><a href="#profile-section">PROFILE</a></li> <!-- ← 修正 -->
+</ul>
+
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <a href="https://www.instagram.com/_____qqo/" target="_blank" class="insta-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- モバイルメニュー -->
+      <nav class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="access.html">ACCESS</a></li>
+          <li><a href="products.html">PRODUCT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+<main class="product-detail">
+  <div class="container">
+    <div class="product-wrapper">
+      <div class="product-image">
+          <img src="img/24481309-7193-4E3F-9941-FA5EA2417574.jpeg" alt="Wooden Plate">
+      </div>
+      <div class="product-info">
+<h2 class="product-title">Wooden Plate</h2>
+<p class="product-desc">
+  天然木のやさしい風合いを活かしたプレート。<br>
+  一点ごとに木目や色味が異なり、同じものはふたつとありません。<br>
+  食卓にぬくもりを添える、使うほどに味わい深くなる一枚です。
+</p>
+<ul class="product-specs">
+  <li><strong>Size:</strong> φ20×H2.5cm</li>
+  <li><strong>Material:</strong> クルミ材（植物性オイル仕上げ）</li>
+</ul>
+<p class="price">¥5,000 (税込)</p>
+        <a href="products.html" class="view-btn">Back</a>
+      </div>
+    </div>
+  </div>
+</main>
+  <footer>
+      <div class="container footer-inner">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <h3>Tsubasa Konno</h3>
+      <p>Woodworks crafted with heart.<br>
+      Based in Hokkaido, Japan.</p>
+    </div>
+
+    <div class="footer-info">
+      <p><strong>Email:</strong> info@tsubasa-konno.com</p>
+      <p><strong>Hours:</strong> 10:00〜17:00 (Weekdays)</p>
+      <p><strong>Materials:</strong> Solid wood / Natural oil finish</p>
+    </div>
+  </div>
+  <p class="copyright">© 2025 Tsubasa Konno</p>
+  </div>
+</footer>
+
+</body>
+  <script>
+  // ハンバーガーメニュー開閉
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+  }
+
+  // プロフィール表示・非表示処理
+  const profileBtn = document.querySelector('a[href="#profile-section"]');
+  const profileSection = document.getElementById('profile-section');
+  const closeProfileBtn = document.getElementById('close-profile');
+
+  if (profileBtn && profileSection && closeProfileBtn) {
+    profileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      profileSection.style.display = 'flex';
+    });
+
+    closeProfileBtn.addEventListener('click', () => {
+      profileSection.style.display = 'none';
+    });
+  }
+</script>
+
+</html>

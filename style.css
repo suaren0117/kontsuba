@@ -1,0 +1,835 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ローディング画面全体 */
+#loading-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* ローディングロゴ */
+.loading-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; /* ← 小さくしてちょうどよく */
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  animation: fadein-pulse 2.5s ease-in-out infinite;
+  line-height: 1.4;
+}
+
+/* ゆっくりフェード＆拡大縮小するアニメーション */
+@keyframes fadein-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+
+/* メインコンテンツ初期非表示 */
+body.loaded main,
+body.loaded header,
+body.loaded footer {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+main, header, footer {
+  opacity: 0;
+}
+
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: #111;
+  color: #fff;
+ padding-top: 80px; /* ヘッダーの高さ分、コンテンツ下げる */
+   opacity: 0;
+  transition: opacity 1s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+header {
+  padding: 20px 0;
+  border-bottom: 1px solid #444;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #111; /* 背景色は必要 */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* アイコン間の余白 */
+}
+
+.hamburger {
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* アクティブ時の変形 */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 80px; /* ヘッダー高さ */
+  right: 0;
+  width: 250px;
+  background-color: #222;
+  border-left: 2px solid #555;
+  padding: 20px;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.7);
+
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* 非表示中はクリック不可 */
+  z-index: 9999;
+}
+
+.mobile-nav.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav li {
+  margin-bottom: 20px;
+}
+
+.mobile-nav a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobile-nav a:hover {
+  color: #ff9900;
+}
+
+
+/* インスタアイコンのサイズ調整 */
+.insta-icon {
+  font-size: 20px;
+  color: #fff;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.insta-icon:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+
+
+
+
+.hero-slider {
+  width: 100%;
+  height: 70vh;
+  max-height: 650px;
+  min-height: 360px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+
+.hero-slider .swiper-slide-active img {
+  transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+}
+
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff;
+  opacity: 1;
+}
+
+/* プロフィールセクション全体 */
+.profile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17,17,17,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 40px 20px;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 中身のレイアウト */
+.profile-content {
+  max-width: 900px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  position: relative;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* プロフィール画像 */
+.profile-img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* テキスト */
+.profile-text {
+  max-width: 500px;
+  font-size: 16px;
+  line-height: 2;
+}
+
+/* 閉じるボタン */
+.close-btn {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.news {
+  padding: 60px 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  background-color: #111;
+}
+
+.news h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
+}
+
+.news-list {
+  font-family: 'Cormorant Garamond', serif;
+  list-style: none;
+  padding-left: 0;
+  line-height: 2; /* 行間確保 */
+  font-size: 18px; /* ← 大きくして見やすく！ */
+  color: #eee;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-list .date {
+  font-size: 16px;
+  color: #aaa;
+  margin-right: 10px;
+}
+
+.news-link {
+  color: #eee;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.3s;
+}
+
+.news-link:hover {
+  opacity: 0.6;
+}
+
+
+
+.recommended {
+  padding: 60px 0;
+  background-color: #111;
+}
+
+.recommended h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+.item-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.item-card {
+  width: 380px; /* ← 大きく！ */
+  text-align: center;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+.item-card img {
+   width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+}
+
+.item-card p {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #eee;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ボタンも大きくして映える感じに */
+.view-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 18px;
+  font-size: 15px;
+  color: #fff;
+  border: 1px solid #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background 0.3s;
+}
+.view-btn:hover {
+  background: #fff;
+  color: #111;
+}
+
+
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+.footer-info p {
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+
+
+
+/* ===== Access ページ強化CSS ===== */
+
+.access-page {
+  padding: 100px 20px 60px;
+  background: linear-gradient(to bottom, #111, #1a1a1a);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+}
+
+.access-title {
+  font-size: 36px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.access-subtitle {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 50px;
+}
+
+.address-box {
+  background-color: #1e1e1e;
+  padding: 25px 30px;
+  margin: 0 auto 40px;
+  max-width: 600px;
+  border-left: 5px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+.address-box p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.map-wrap {
+  margin: 50px auto;
+  max-width: 760px;
+  border: 2px solid #d2b48c; /* タン系の枠線（レトロ感） */
+  border-radius: 10px;
+  background-color: #fdfaf4; /* 古紙風のベージュ背景 */
+  box-shadow: 0 8px 24px rgba(105, 90, 75, 0.3); /* くすんだ影 */
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.map-wrap:hover {
+  box-shadow: 0 12px 32px rgba(105, 90, 75, 0.45);
+  transform: translateY(-2px);
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 420px;
+  border: none;
+  filter: sepia(0.3) brightness(0.95) contrast(1.05) grayscale(0.2);
+  border-radius: 4px;
+}
+
+.map-caption {
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.access-details {
+  max-width: 700px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+}
+
+.access-details h3 {
+  font-size: 22px;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 6px;
+}
+
+.access-details p {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* ===== product ページ強化CSS ===== */
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #eee;
+  margin-top: 8px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+}
+
+.product-detail {
+  padding: 80px 20px;
+  background: #111;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+}
+
+.product-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-image {
+  flex: 1 1 45%;
+  max-width: 500px;
+}
+
+.product-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1 1 50%;
+  padding-top: 20px;
+}
+
+.product-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.product-desc {
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.product-specs {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.product-specs li {
+  font-size: 15px;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+.contact-page {
+  background-color: #111;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  padding-top: 100px;
+}
+
+.contact-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact-heading {
+  display: flex;
+  align-items: baseline; /* タイトルの下線に揃える */
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-title {
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.contact-subtitle {
+  font-size: 16px;
+  color: #ccc;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #111;
+  color: #eee;
+  font-size: 16px;
+  font-family: 'Playfair Display', serif;
+  transition: border 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #fff;
+  outline: none;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 14px;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .profile-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .item-card {
+    width: 100%;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .contact-title {
+    font-size: 26px;
+  }
+
+  .contact-subtitle {
+    font-size: 14px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 15px;
+  }
+
+  .submit-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .address-box {
+    font-size: 14px;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .map-wrap iframe {
+    height: 300px; /* 高さを小さく */
+  }
+
+  .map-caption {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .access-details h3 {
+    font-size: 18px;
+  }
+
+  .access-details p {
+    font-size: 14px;
+    padding: 0 10px 20px;
+  }
+
+    .item-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item-card {
+    width: 100%;
+  }
+
+  .item-card img {
+    height: auto;
+    max-height: 300px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+    footer .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+  }
+  .product-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .product-image,
+  .product-info {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .product-title {
+    font-size: 24px;
+  }
+
+  .product-desc,
+  .product-specs li,
+  .price {
+    font-size: 16px;
+  }
+
+  .view-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 30px;
+  }
+  }

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access | Tsubasa Konno</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- フォント＆アイコン -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="loaded">
+  <header>
+    <div class="container header-inner">
+      <h1 class="logo">Tsubasa Konno lineup</h1>
+      <nav>
+<ul class="nav-list">
+  <li><a href="index.html">HOME</a></li>
+  <li><a href="products.html">PRODUCTS</a></li>
+  <li><a href="#profile-section">PROFILE</a></li> <!-- ← 修正 -->
+</ul>
+
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <a href="https://www.instagram.com/_____qqo/" target="_blank" class="insta-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- モバイルメニュー -->
+      <nav class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="access.html">ACCESS</a></li>
+          <li><a href="products.html">PRODUCT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Profile Section (Hidden initially) -->
+<section id="profile-section" class="profile-overlay">
+  <div class="profile-content">
+    <img src="img/cb9de3fdab535b790fa36922774848ef_600.jpg" alt="プロフィール画像" class="profile-img">
+    <div class="profile-text">
+      <h2>Tsubasa.konno</h2>
+      <p>
+        北海道の澄んだ空気と広大な自然の中で、木工職人として日々ものづくりに向き合っています。<br><br>
+        主にスツールや小さな家具、暮らしに寄り添う木の道具を製作しています。<br><br>
+        木のぬくもりや表情を大切に、ひとつひとつ丁寧に手作業で仕上げています。<br><br>
+        使うほどに味わいが増し、暮らしの中で長く寄り添っていけるような、そんなものづくりを心がけています。<br><br>
+        大量生産にはない、手仕事ならではの心地よさを、ぜひ感じていただけたら嬉しいです。
+      </p>
+    </div>
+    <button id="close-profile" class="close-btn">×</button>
+  </div>
+</section>
+
+
+  <main class="access-page">
+    <div class="container">
+      <h2 class="access-title">Access</h2>
+
+      <div class="address-box">
+        <p><strong>住所：</strong>〒061-2301 北海道鷹栖3条 久保宅</p>
+        <p><strong>開催地：</strong>Tsubasa Shop</p>
+      </div>
+
+      <div class="map-wrap">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d958.7491212746983!2d142.4302034!3d43.7111348!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDQyJzQwLjEiTiAxNDLCsDI1JzQ4LjciRQ!5e0!3m2!1sja!2sjp!4v1719471327342!5m2!1sja!2sjp"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p class="map-caption">※カーナビでは「ぼっくんの家」と検索するとスムーズです。</p>
+
+      <section class="access-details">
+        <h3>お車でお越しの方</h3>
+        <p>旭川中心部から車で約40分。無料駐車場あり。</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h3>Tsubasa Konno</h3>
+        <p>Woodworks crafted with heart.<br>Based in Hokkaido, Japan.</p>
+      </div>
+      <div class="footer-info">
+        <p><strong>Email:</strong> info@tsubasa-konno.com</p>
+        <p><strong>Hours:</strong> 13:00〜17:00 (Weekdays)</p>
+        <p><strong>Materials:</strong> Solid wood / Natural oil finish</p>
+      </div>
+      <p class="copyright">© 2025 Tsubasa Konno</p>
+    </div>
+  </footer>
+
+  <script>
+  // ハンバーガーメニュー開閉
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+  }
+
+  // プロフィール表示・非表示処理
+  const profileBtn = document.querySelector('a[href="#profile-section"]');
+  const profileSection = document.getElementById('profile-section');
+  const closeProfileBtn = document.getElementById('close-profile');
+
+  if (profileBtn && profileSection && closeProfileBtn) {
+    profileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      profileSection.style.display = 'flex';
+    });
+
+    closeProfileBtn.addEventListener('click', () => {
+      profileSection.style.display = 'none';
+    });
+  }
+</script>
+
+</body>
+
+</html>
