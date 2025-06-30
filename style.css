@@ -832,4 +832,29 @@ footer {
     text-align: center;
     border-radius: 30px;
   }
+  /* プロフィールオーバーレイ調整（スマホ） */
+.profile-overlay {
+  align-items: flex-start; /* 上寄せに */
+  overflow-y: auto; /* スクロールできるように */
+  padding-top: 60px; /* 上に余白つける */
+}
+
+/* プロフィールの中身を縦並びに */
+.profile-content {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* バツボタン位置調整 */
+.close-btn {
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  z-index: 10000;
+}
+
   }
