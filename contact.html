@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Access | Tsubasa Konno</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- フォント＆アイコン -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tubasa Konno</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="loaded">
+<body>
+
+<!-- ローディング画面：クラスで制御 -->
+<div id="loading-screen" class="loading-screen">
+  <div class="loading-logo">
+    <span class="logo-line">Tsubasa.</span><br>
+    <span class="logo-line">Konno</span>
+  </div>
+</div>
+
+
   <header>
-    <div class="container header-inner">
-      <h1 class="logo">Tsubasa Konno lineup</h1>
-      <nav>
-<ul class="nav-list">
-  <li><a href="index.html">HOME</a></li>
-  <li><a href="products.html">PRODUCTS</a></li>
-  <li><a href="#profile-section">PROFILE</a></li> <!-- ← 修正 -->
-</ul>
+  <div class="container header-inner">
+    <h1 class="logo">Tsubasa Konno lineup</h1>
 
-        </ul>
-      </nav>
+    <!-- アイコンまとめ親要素 -->
+    <div class="header-icons">
+      <a href="https://www.instagram.com/_____qqo/" target="_blank" class="insta-icon">
+        <i class="fab fa-instagram"></i>
+      </a>
 
-      <div class="header-icons">
-        <a href="https://www.instagram.com/_____qqo/" target="_blank" class="insta-icon">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </div>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
       </div>
-
-      <!-- モバイルメニュー -->
-      <nav class="mobile-nav" id="mobileNav">
-        <ul>
-          <li><a href="access.html">ACCESS</a></li>
-          <li><a href="products.html">PRODUCT</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
+
+    <!-- モバイルメニュー -->
+    <nav class="mobile-nav" id="mobileNav">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="products.html">PRODUCTS</a></li>
+        <li><a href="#profile">PROFILE</a></li>
+        <li><a href="access.html">ACCESS</a></li>
+        <li><a href="products.html">PRODUCT</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- Profile Section (Hidden initially) -->
 <section id="profile-section" class="profile-overlay">
